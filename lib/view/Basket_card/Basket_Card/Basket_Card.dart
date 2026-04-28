@@ -1,5 +1,12 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/resources/color_manager.dart';
+import '../../../core/resources/font_size_manager.dart';
+import '../../../core/resources/height.dart';
+import '../../../core/resources/raduis_manager.dart';
+import '../../../core/resources/utils.dart';
+import '../../../core/resources/width.dart';
+
 
 class MedicineScreen extends StatelessWidget {
   const MedicineScreen({super.key});
@@ -7,15 +14,15 @@ class MedicineScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xFFF7F9FB),
+      backgroundColor:  ColorManager.white,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: ColorManager.white,
         elevation: 0,
-        title: const Text(
-          "THE MEDICINE",
-          style: TextStyle(color: Colors.black),
+        title:  Text(
+          Utils.medicineName,
+          style: TextStyle(color: ColorManager.black),
         ),
-        iconTheme: const IconThemeData(color: Colors.black),
+        iconTheme:  IconThemeData(color: ColorManager.black),
       ),
 
       body: Padding(
@@ -25,30 +32,30 @@ class MedicineScreen extends StatelessWidget {
 
             /// Circle Icon
             Container(
-              height: 100,
-              width: 100,
-              decoration: const BoxDecoration(
-                color: Color(0xFF2D9CDB),
+              height: HeightManager.h100,
+              width: WidthManager.w100,
+              decoration: BoxDecoration(
+                color: ColorManager.primary,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(
+              child:  Icon(
                 Icons.check,
-                color: Colors.white,
-                size: 50,
+                color: ColorManager.white,
+                size: FontSizeManager.f50,
               ),
             ),
 
-            const SizedBox(height: 20),
+            SizedBox(height: HeightManager.h20),
 
             /// Medicines
             Expanded(
               child: ListView(
                 children: [
 
-                  medicineCard("OBH Combi", "75ml", "\$9.99"),
-                  medicineCard("Betadine", "50ml", "\$6.99"),
-                  medicineCard("Panadol", "20pcs", "\$15.99"),
-                  medicineCard("Bodrex Herbal", "100ml", "\$7.99"),
+                  medicineCard(Utils.obhCombi, Utils.ml75, Utils.p999),
+                  medicineCard(Utils.betadine, Utils.ml50, Utils.p699),
+                  medicineCard(Utils.panadol, Utils.pcs20, Utils.p1599),
+                  medicineCard(Utils.bodrexHerbal, Utils.ml100, Utils.p799),
 
                 ],
               ),
@@ -59,16 +66,16 @@ class MedicineScreen extends StatelessWidget {
               width: double.infinity,
               child: ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: const Color(0xFF2D9CDB),
-                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  backgroundColor:  ColorManager.primary,
+                  padding:  EdgeInsets.symmetric(vertical: HeightManager.h10),
                   shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
+                    borderRadius: BorderRadius.circular(RaduisManager.r12),
                   ),
                 ),
                 onPressed: () {},
-                child: const Text(
-                  "Add All To Cart",
-                  style: TextStyle(fontSize: 16),
+                child:  Text(
+                 Utils.addAllToCart,
+                  style: TextStyle(fontSize: FontSizeManager.f16),
                 ),
               ),
             )
@@ -85,11 +92,11 @@ class MedicineScreen extends StatelessWidget {
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: const [
+        borderRadius: BorderRadius.circular(RaduisManager.r12),
+        boxShadow: [
           BoxShadow(
             blurRadius: 10,
-            color: Colors.black12,
+            color: ColorManager.black12,
           )
         ],
       ),
@@ -98,16 +105,16 @@ class MedicineScreen extends StatelessWidget {
 
           /// Image
           Container(
-            height: 60,
-            width: 60,
+            height: HeightManager.h60,
+            width: WidthManager.w60,
             decoration: BoxDecoration(
               color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(RaduisManager.r10),
             ),
             child: const Icon(Icons.medication),
           ),
 
-          const SizedBox(width: 12),
+           SizedBox(width: WidthManager.w10),
 
           /// Name
           Expanded(
@@ -116,9 +123,9 @@ class MedicineScreen extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: const TextStyle(
+                  style:  TextStyle(
                     fontWeight: FontWeight.bold,
-                    fontSize: 16,
+                    fontSize: FontSizeManager.f16,
                   ),
                 ),
                 Text(size),
@@ -129,8 +136,8 @@ class MedicineScreen extends StatelessWidget {
           /// Price
           Text(
             price,
-            style: const TextStyle(
-              color: Color(0xFF2D9CDB),
+            style:  TextStyle(
+              color: ColorManager.primary,
               fontWeight: FontWeight.bold,
             ),
           )

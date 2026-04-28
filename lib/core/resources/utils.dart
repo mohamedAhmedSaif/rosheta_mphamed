@@ -1,6 +1,63 @@
-
 class Utils {
+  static String get registered => "Registered";
+
   Utils._();
 
+  static String get signUp => "Sign Up";
+  static String get customerName => "Alice Brown";
+  static String get ml75 => "75ml";
+  static String get p999 => "\$9.99";
+  static String get addAllToCart =>  "Add All To Cart";
+  static String get p699 => "\$6.99";
+  static String get p1599 => "\$15.99";
+  static String get p799 => "\$7.99";
+  static String get ml50 => "50ml";
+  static String get pcs20 => "20pcs";
+  static String get ml100 => "100ml";
+  static String get bobSmith => "Bob Smith";
+  static String get carolWhite =>  "Carol White";
+  static String get ord1 => "ORD-001";
+  static String get ord2 => "ORD-002";
+  static String get ord3 => "ORD-003";
+  static String get recentOrders => "Recent Orders";
+  static String get completed => "Completed";
+  static String get processing => "Processing";
+  static String get decline => "Decline";
+  static String get pendingNumber => "\$45.50";
+  static String get completedNumber => "\$28.00";
+  static String get processingNumber => "\$67.80";
+  static String get medicineName => "THE MEDICINE";
+  static String get pending => "Pending";
+  static String get accept => "Accept";
+  static String get emmaWilson => "Emma Wilson";
+  static String get pendingRequests => "Pending Requests";
+  static String get insulinGlarine => "Insulin Glargine";
+  static String get obhCombi => "OBH Combi";
+  static String get betadine => "Betadine";
+  static String get panadol => "Panadol";
+  static String get bodrexHerbal => "Bodrex Herbal";
+  static String get hydroxychloroquine => "Hydroxychloroquine";
+  static String get davidLee => "David Lee";
+  static String get requests => "Requests";
+  static String get customers => "1,234";
+  static String get medicines => "342";
+  static String get medicinesText => "Medicines";
+  static String get manageMedicines => "Manage Medicines";
+  static String get customersText => "Customers";
+  static String get total => "156";
+  static String get totalOrders => "Total Orders";
+  static String get revenue => "\$8,450";
+  static String get revenueText => "Revenue";
+  static String get pharmacyDashboard => "Pharmacy Dashboard";
+  static String get name => "Name";
+  static String get Email => "Email";
+  static String get Password => "Password";
+  static String get success => "Success";
+  static String get successMessage => "Your account has been successfully registered";
 
+  static String get login => "Login";
+  static String get welcomeBack => "Yeay! Welcome Back";
+  static String get welcomeMessage => "Once again you login successfully ";
+  static String get intoRoshetaApp => "into rosheta app";
+  static String get goToHome => "Go To Home";
 }

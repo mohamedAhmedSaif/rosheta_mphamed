@@ -14,7 +14,7 @@ class RoutsManager {
   static Route<dynamic> onGenerateRoute(RouteSettings settings) {
     Widget page;
 
-    if (RoutesNameManager.onboarding.routeName == "/") {
+    if (RoutesNameManager.login.routeName == "/") {
       page = OnboardingPage();
     }   else if (RoutesNameManager.onboarding.routeName == "/home") {
       page = HomePage();
