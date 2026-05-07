@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class IncomingOrdersPage extends StatefulWidget {
   const IncomingOrdersPage({Key? key}) : super(key: key);
@@ -19,7 +20,6 @@ class _IncomingOrdersPageState extends State<IncomingOrdersPage> {
       'amount': '\$30.47',
       'time': '10 mins ago',
       'items': '3 Items',
-      'status': 'Pending',
     },
     {
       'id': '#12342',
@@ -28,7 +28,6 @@ class _IncomingOrdersPageState extends State<IncomingOrdersPage> {
       'amount': '\$18.75',
       'time': '2 hours ago',
       'items': '1 Items',
-      'status': 'Pending',
     },
   ];
 
@@ -40,9 +39,9 @@ class _IncomingOrdersPageState extends State<IncomingOrdersPage> {
         backgroundColor: const Color(0xFF2563EB),
         foregroundColor: Colors.white,
         elevation: 0,
-        title: const Text(
+        title: Text(
           'Incoming Orders',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.sp),
         ),
         leading: const BackButton(),
       ),
@@ -51,30 +50,25 @@ class _IncomingOrdersPageState extends State<IncomingOrdersPage> {
           // Tab Bar
           Container(
             color: const Color(0xFF2563EB),
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 16),
+            padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 16.h),
             child: Row(
               children: List.generate(_tabs.length, (i) {
                 final isSelected = i == _selectedTab;
                 return GestureDetector(
                   onTap: () => setState(() => _selectedTab = i),
                   child: Container(
-                    margin: const EdgeInsets.only(right: 8),
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+                    margin: EdgeInsets.only(right: 8.w),
+                    padding: EdgeInsets.symmetric(horizontal: 18.w, vertical: 8.h),
                     decoration: BoxDecoration(
-                      color: isSelected
-                          ? Colors.white
-                          : Colors.white.withOpacity(0.2),
-                      borderRadius: BorderRadius.circular(20),
+                      color: isSelected ? Colors.white : Colors.white.withOpacity(0.2),
+                      borderRadius: BorderRadius.circular(20.r),
                     ),
                     child: Text(
                       _tabs[i],
                       style: TextStyle(
-                        color: isSelected
-                            ? const Color(0xFF2563EB)
-                            : Colors.white,
+                        color: isSelected ? const Color(0xFF2563EB) : Colors.white,
                         fontWeight: FontWeight.w600,
-                        fontSize: 13,
+                        fontSize: 13.sp,
                       ),
                     ),
                   ),
@@ -86,12 +80,9 @@ class _IncomingOrdersPageState extends State<IncomingOrdersPage> {
           // Orders List
           Expanded(
             child: ListView.builder(
-              padding: const EdgeInsets.all(16),
+              padding: EdgeInsets.all(16.w),
               itemCount: _orders.length,
-              itemBuilder: (context, index) {
-                final order = _orders[index];
-                return _OrderCard(order: order);
-              },
+              itemBuilder: (context, index) => _OrderCard(order: _orders[index]),
             ),
           ),
         ],
@@ -102,26 +93,19 @@ class _IncomingOrdersPageState extends State<IncomingOrdersPage> {
 
 class _OrderCard extends StatelessWidget {
   final Map<String, dynamic> order;
-
   const _OrderCard({required this.order});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 14),
+      margin: EdgeInsets.only(bottom: 14.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.06),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(14.r),
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.06), blurRadius: 8, offset: const Offset(0, 2))],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(14),
+        padding: EdgeInsets.all(14.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -130,78 +114,53 @@ class _OrderCard extends StatelessWidget {
               children: [
                 Text(
                   'Order ${order['id']}',
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: Color(0xFF1E293B),
-                  ),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.sp, color: const Color(0xFF1E293B)),
                 ),
                 Text(
                   order['amount'],
-                  style: const TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                    color: Color(0xFF2563EB),
-                  ),
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.sp, color: const Color(0xFF2563EB)),
                 ),
               ],
             ),
-            const SizedBox(height: 4),
-            Text(
-              order['name'],
-              style: const TextStyle(fontSize: 13, color: Color(0xFF64748B)),
-            ),
-            Text(
-              order['phone'],
-              style: const TextStyle(fontSize: 13, color: Color(0xFF64748B)),
-            ),
-            const SizedBox(height: 4),
+            SizedBox(height: 4.h),
+            Text(order['name'], style: TextStyle(fontSize: 13.sp, color: const Color(0xFF64748B))),
+            Text(order['phone'], style: TextStyle(fontSize: 13.sp, color: const Color(0xFF64748B))),
+            SizedBox(height: 4.h),
             Row(
               children: [
-                const Icon(Icons.access_time, size: 13, color: Colors.grey),
-                const SizedBox(width: 4),
-                Text(order['time'],
-                    style: const TextStyle(fontSize: 12, color: Colors.grey)),
-                const SizedBox(width: 12),
-                const Icon(Icons.inventory_2_outlined,
-                    size: 13, color: Colors.grey),
-                const SizedBox(width: 4),
-                Text(order['items'],
-                    style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                Icon(Icons.access_time, size: 13.sp, color: Colors.grey),
+                SizedBox(width: 4.w),
+                Text(order['time'], style: TextStyle(fontSize: 12.sp, color: Colors.grey)),
+                SizedBox(width: 12.w),
+                Icon(Icons.inventory_2_outlined, size: 13.sp, color: Colors.grey),
+                SizedBox(width: 4.w),
+                Text(order['items'], style: TextStyle(fontSize: 12.sp, color: Colors.grey)),
               ],
             ),
-            const SizedBox(height: 12),
+            SizedBox(height: 12.h),
             Row(
               children: [
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: () {},
-                    icon: const Icon(Icons.check_circle_outline,
-                        color: Colors.white, size: 16),
-                    label: const Text('Accept & Add Receiver',
-                        style: TextStyle(color: Colors.white, fontSize: 12)),
+                    icon: Icon(Icons.check_circle_outline, color: Colors.white, size: 16.sp),
+                    label: Text('Accept & Add Receiver', style: TextStyle(color: Colors.white, fontSize: 12.sp)),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: const Color(0xFF2563EB),
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
+                      padding: EdgeInsets.symmetric(vertical: 10.h),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
                     ),
                   ),
                 ),
-                const SizedBox(width: 10),
+                SizedBox(width: 10.w),
                 OutlinedButton.icon(
                   onPressed: () {},
-                  icon: const Icon(Icons.close,
-                      color: Color(0xFFEF4444), size: 16),
-                  label: const Text('Reject',
-                      style: TextStyle(
-                          color: Color(0xFFEF4444), fontSize: 12)),
+                  icon: Icon(Icons.close, color: const Color(0xFFEF4444), size: 16.sp),
+                  label: Text('Reject', style: TextStyle(color: const Color(0xFFEF4444), fontSize: 12.sp)),
                   style: OutlinedButton.styleFrom(
                     side: const BorderSide(color: Color(0xFFEF4444)),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 14, vertical: 10),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8)),
+                    padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 10.h),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
                   ),
                 ),
               ],

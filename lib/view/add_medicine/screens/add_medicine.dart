@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddMedicinePage extends StatefulWidget {
   const AddMedicinePage({Key? key}) : super(key: key);
@@ -18,21 +19,8 @@ class _AddMedicinePageState extends State<AddMedicinePage> {
   String? _selectedCategory;
   String? _selectedType;
 
-  final List<String> _categories = [
-    'Medicines',
-    'Supplements',
-    'Equipment',
-    'Other',
-  ];
-
-  final List<String> _types = [
-    'Tablet',
-    'Capsule',
-    'Syrup',
-    'Injection',
-    'Cream',
-    'Drops',
-  ];
+  final List<String> _categories = ['Medicines', 'Supplements', 'Equipment', 'Other'];
+  final List<String> _types = ['Tablet', 'Capsule', 'Syrup', 'Injection', 'Cream', 'Drops'];
 
   @override
   void dispose() {
@@ -52,57 +40,52 @@ class _AddMedicinePageState extends State<AddMedicinePage> {
         backgroundColor: const Color(0xFF2563EB),
         foregroundColor: Colors.white,
         elevation: 0,
-        title: const Text(
+        title: Text(
           'Add Medicine',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.sp),
         ),
         leading: const BackButton(),
       ),
       body: SingleChildScrollView(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16.w),
         child: Form(
           key: _formKey,
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Medicine Name
               _buildLabel('Medicine Name *'),
               _buildTextField(
                 controller: _medicineNameController,
                 hint: 'e.g. Paracetamol 500mg',
-                validator: (v) =>
-                    v == null || v.isEmpty ? 'Required' : null,
+                validator: (v) => v == null || v.isEmpty ? 'Required' : null,
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
-              // Manufacturer
               _buildLabel('Manufacturer'),
               _buildTextField(
                 controller: _manufacturerController,
                 hint: 'e.g. Pharmaceutical Ltd.',
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
-              // Size & Quantity Row
               Row(
                 children: [
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        _buildLabel('Size / *'),
+                        _buildLabel('Size *'),
                         _buildTextField(
                           controller: _sizeController,
                           hint: '500mg',
-                          validator: (v) =>
-                              v == null || v.isEmpty ? 'Required' : null,
+                          validator: (v) => v == null || v.isEmpty ? 'Required' : null,
                         ),
                       ],
                     ),
                   ),
-                  const SizedBox(width: 12),
+                  SizedBox(width: 12.w),
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -112,8 +95,7 @@ class _AddMedicinePageState extends State<AddMedicinePage> {
                           controller: _quantityController,
                           hint: '10',
                           keyboardType: TextInputType.number,
-                          validator: (v) =>
-                              v == null || v.isEmpty ? 'Required' : null,
+                          validator: (v) => v == null || v.isEmpty ? 'Required' : null,
                         ),
                       ],
                     ),
@@ -121,9 +103,8 @@ class _AddMedicinePageState extends State<AddMedicinePage> {
                 ],
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
-              // Category Dropdown
               _buildLabel('Category *'),
               _buildDropdown(
                 hint: 'Medicines',
@@ -132,9 +113,8 @@ class _AddMedicinePageState extends State<AddMedicinePage> {
                 onChanged: (val) => setState(() => _selectedCategory = val),
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
-              // Type Dropdown
               _buildLabel('Item Type *'),
               _buildDropdown(
                 hint: 'Select type',
@@ -143,32 +123,30 @@ class _AddMedicinePageState extends State<AddMedicinePage> {
                 onChanged: (val) => setState(() => _selectedType = val),
               ),
 
-              const SizedBox(height: 14),
+              SizedBox(height: 14.h),
 
-              // Description
               _buildLabel('Description'),
               Container(
                 decoration: BoxDecoration(
                   color: Colors.white,
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(10.r),
                   border: Border.all(color: const Color(0xFFE2E8F0)),
                 ),
                 child: TextFormField(
                   controller: _descriptionController,
                   maxLines: 4,
-                  decoration: const InputDecoration(
+                  style: TextStyle(fontSize: 14.sp),
+                  decoration: InputDecoration(
                     hintText: 'Describe the medicine, usage, etc.',
-                    hintStyle: TextStyle(
-                        color: Color(0xFFCBD5E1), fontSize: 13),
+                    hintStyle: TextStyle(color: const Color(0xFFCBD5E1), fontSize: 13.sp),
                     border: InputBorder.none,
-                    contentPadding: EdgeInsets.all(12),
+                    contentPadding: EdgeInsets.all(12.w),
                   ),
                 ),
               ),
 
-              const SizedBox(height: 28),
+              SizedBox(height: 28.h),
 
-              // Submit Button
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
@@ -184,17 +162,12 @@ class _AddMedicinePageState extends State<AddMedicinePage> {
                   },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color(0xFF2563EB),
-                    padding: const EdgeInsets.symmetric(vertical: 14),
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(12)),
+                    padding: EdgeInsets.symmetric(vertical: 14.h),
+                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12.r)),
                   ),
-                  child: const Text(
+                  child: Text(
                     'Add Medicine',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 16,
-                      fontWeight: FontWeight.bold,
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 16.sp, fontWeight: FontWeight.bold),
                   ),
                 ),
               ),
@@ -207,14 +180,10 @@ class _AddMedicinePageState extends State<AddMedicinePage> {
 
   Widget _buildLabel(String text) {
     return Padding(
-      padding: const EdgeInsets.only(bottom: 6),
+      padding: EdgeInsets.only(bottom: 6.h),
       child: Text(
         text,
-        style: const TextStyle(
-          fontSize: 13,
-          fontWeight: FontWeight.w600,
-          color: Color(0xFF334155),
-        ),
+        style: TextStyle(fontSize: 13.sp, fontWeight: FontWeight.w600, color: const Color(0xFF334155)),
       ),
     );
   }
@@ -229,31 +198,17 @@ class _AddMedicinePageState extends State<AddMedicinePage> {
       controller: controller,
       keyboardType: keyboardType,
       validator: validator,
+      style: TextStyle(fontSize: 14.sp),
       decoration: InputDecoration(
         hintText: hint,
-        hintStyle:
-            const TextStyle(color: Color(0xFFCBD5E1), fontSize: 13),
+        hintStyle: TextStyle(color: const Color(0xFFCBD5E1), fontSize: 13.sp),
         filled: true,
         fillColor: Colors.white,
-        contentPadding:
-            const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Color(0xFFE2E8F0)),
-        ),
-        enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Color(0xFFE2E8F0)),
-        ),
-        focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide:
-              const BorderSide(color: Color(0xFF2563EB), width: 1.5),
-        ),
-        errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10),
-          borderSide: const BorderSide(color: Color(0xFFEF4444)),
-        ),
+        contentPadding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 12.h),
+        border: OutlineInputBorder(borderRadius: BorderRadius.circular(10.r), borderSide: const BorderSide(color: Color(0xFFE2E8F0))),
+        enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.r), borderSide: const BorderSide(color: Color(0xFFE2E8F0))),
+        focusedBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.r), borderSide: const BorderSide(color: Color(0xFF2563EB), width: 1.5)),
+        errorBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(10.r), borderSide: const BorderSide(color: Color(0xFFEF4444))),
       ),
     );
   }
@@ -267,27 +222,20 @@ class _AddMedicinePageState extends State<AddMedicinePage> {
     return Container(
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(10),
+        borderRadius: BorderRadius.circular(10.r),
         border: Border.all(color: const Color(0xFFE2E8F0)),
       ),
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: EdgeInsets.symmetric(horizontal: 12.w),
       child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
           value: value,
-          hint: Text(hint,
-              style: const TextStyle(
-                  color: Color(0xFFCBD5E1), fontSize: 13)),
+          hint: Text(hint, style: TextStyle(color: const Color(0xFFCBD5E1), fontSize: 13.sp)),
           isExpanded: true,
-          icon: const Icon(Icons.keyboard_arrow_down,
-              color: Color(0xFF94A3B8)),
-          items: items
-              .map((item) => DropdownMenuItem(
-                    value: item,
-                    child: Text(item,
-                        style: const TextStyle(
-                            fontSize: 14, color: Color(0xFF1E293B))),
-                  ))
-              .toList(),
+          icon: Icon(Icons.keyboard_arrow_down, color: const Color(0xFF94A3B8), size: 20.sp),
+          items: items.map((item) => DropdownMenuItem(
+            value: item,
+            child: Text(item, style: TextStyle(fontSize: 14.sp, color: const Color(0xFF1E293B))),
+          )).toList(),
           onChanged: onChanged,
         ),
       ),

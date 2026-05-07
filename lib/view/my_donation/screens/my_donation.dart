@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyDonationsPage extends StatelessWidget {
   const MyDonationsPage({Key? key}) : super(key: key);
@@ -35,9 +36,9 @@ class MyDonationsPage extends StatelessWidget {
         backgroundColor: const Color(0xFF2563EB),
         foregroundColor: Colors.white,
         elevation: 0,
-        title: const Text(
+        title: Text(
           'My Donations',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.sp),
         ),
         leading: const BackButton(),
       ),
@@ -46,7 +47,7 @@ class MyDonationsPage extends StatelessWidget {
           // Stats Row
           Container(
             color: const Color(0xFF2563EB),
-            padding: const EdgeInsets.fromLTRB(16, 0, 16, 24),
+            padding: EdgeInsets.fromLTRB(16.w, 0, 16.w, 24.h),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
@@ -61,32 +62,28 @@ class MyDonationsPage extends StatelessWidget {
 
           // Thank You Banner
           Container(
-            margin: const EdgeInsets.all(16),
-            padding: const EdgeInsets.all(16),
+            margin: EdgeInsets.all(16.w),
+            padding: EdgeInsets.all(16.w),
             decoration: BoxDecoration(
               color: const Color(0xFF2563EB),
-              borderRadius: BorderRadius.circular(14),
+              borderRadius: BorderRadius.circular(14.r),
             ),
             child: Row(
               children: [
-                const Icon(Icons.favorite, color: Colors.white, size: 28),
-                const SizedBox(width: 12),
-                const Expanded(
+                Icon(Icons.favorite, color: Colors.white, size: 28.sp),
+                SizedBox(width: 12.w),
+                Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         'Thank You for Your Kindness!',
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
+                        style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15.sp),
                       ),
-                      SizedBox(height: 4),
+                      SizedBox(height: 4.h),
                       Text(
                         'Your donations have helped 11 people access essential medicines.',
-                        style: TextStyle(color: Colors.white70, fontSize: 12),
+                        style: TextStyle(color: Colors.white70, fontSize: 12.sp),
                       ),
                     ],
                   ),
@@ -95,41 +92,33 @@ class MyDonationsPage extends StatelessWidget {
             ),
           ),
 
-          // Recent Donations Header
+          // Header Row
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: EdgeInsets.symmetric(horizontal: 16.w),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'Recent Donations',
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF1E293B),
-                  ),
+                  style: TextStyle(fontSize: 16.sp, fontWeight: FontWeight.bold, color: const Color(0xFF1E293B)),
                 ),
                 TextButton(
                   onPressed: () {},
-                  child: const Text(
+                  child: Text(
                     '+ Add New',
-                    style: TextStyle(
-                        color: Color(0xFF2563EB), fontWeight: FontWeight.w600),
+                    style: TextStyle(color: const Color(0xFF2563EB), fontWeight: FontWeight.w600, fontSize: 14.sp),
                   ),
                 ),
               ],
             ),
           ),
 
-          // Donations List
+          // List
           Expanded(
             child: ListView.builder(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
               itemCount: _donations.length,
-              itemBuilder: (context, index) {
-                final item = _donations[index];
-                return _DonationItem(donation: item);
-              },
+              itemBuilder: (context, index) => _DonationItem(donation: _donations[index]),
             ),
           ),
         ],
@@ -137,33 +126,20 @@ class MyDonationsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildDivider() {
-    return Container(height: 30, width: 1, color: Colors.white30);
-  }
+  Widget _buildDivider() => Container(height: 30.h, width: 1, color: Colors.white30);
 }
 
 class _StatItem extends StatelessWidget {
   final String value;
   final String label;
-
   const _StatItem({required this.value, required this.label});
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          value,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 28,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        Text(
-          label,
-          style: const TextStyle(color: Colors.white70, fontSize: 13),
-        ),
+        Text(value, style: TextStyle(color: Colors.white, fontSize: 28.sp, fontWeight: FontWeight.bold)),
+        Text(label, style: TextStyle(color: Colors.white70, fontSize: 13.sp)),
       ],
     );
   }
@@ -171,69 +147,45 @@ class _StatItem extends StatelessWidget {
 
 class _DonationItem extends StatelessWidget {
   final Map<String, dynamic> donation;
-
   const _DonationItem({required this.donation});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(14),
+      margin: EdgeInsets.only(bottom: 10.h),
+      padding: EdgeInsets.all(14.w),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 6,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(12.r),
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 6, offset: const Offset(0, 2))],
       ),
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: const Color(0xFFEFF6FF),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: const Icon(Icons.medication, color: Color(0xFF2563EB), size: 22),
+            padding: EdgeInsets.all(10.w),
+            decoration: BoxDecoration(color: const Color(0xFFEFF6FF), borderRadius: BorderRadius.circular(10.r)),
+            child: Icon(Icons.medication, color: const Color(0xFF2563EB), size: 22.sp),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  donation['name'],
-                  style: const TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 14,
-                    color: Color(0xFF1E293B),
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  '${donation['quantity']} • ${donation['date']}',
-                  style: const TextStyle(fontSize: 12, color: Colors.grey),
-                ),
+                Text(donation['name'], style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14.sp, color: const Color(0xFF1E293B))),
+                SizedBox(height: 2.h),
+                Text('${donation['quantity']} • ${donation['date']}', style: TextStyle(fontSize: 12.sp, color: Colors.grey)),
               ],
             ),
           ),
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 4.h),
             decoration: BoxDecoration(
               color: (donation['statusColor'] as Color).withOpacity(0.1),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(8.r),
             ),
             child: Text(
               donation['status'],
-              style: TextStyle(
-                color: donation['statusColor'] as Color,
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-              ),
+              style: TextStyle(color: donation['statusColor'] as Color, fontSize: 12.sp, fontWeight: FontWeight.w600),
             ),
           ),
         ],

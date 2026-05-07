@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class RewardPointsPage extends StatelessWidget {
   const RewardPointsPage({Key? key}) : super(key: key);
@@ -13,170 +14,98 @@ class RewardPointsPage extends StatelessWidget {
             // Header - Reward Points Card
             Container(
               width: double.infinity,
-              decoration: const BoxDecoration(
-                gradient: LinearGradient(
+              decoration: BoxDecoration(
+                gradient: const LinearGradient(
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
                   colors: [Color(0xFF1ABC9C), Color(0xFF16A085)],
                 ),
                 borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(24),
-                  bottomRight: Radius.circular(24),
+                  bottomLeft: Radius.circular(24.r),
+                  bottomRight: Radius.circular(24.r),
                 ),
               ),
-              padding: const EdgeInsets.fromLTRB(20, 60, 20, 30),
+              padding: EdgeInsets.fromLTRB(20.w, 60.h, 20.w, 30.h),
               child: Column(
                 children: [
-                  const Icon(Icons.military_tech, color: Colors.white, size: 48),
-                  const SizedBox(height: 12),
-                  const Text(
+                  Icon(Icons.military_tech, color: Colors.white, size: 48.sp),
+                  SizedBox(height: 12.h),
+                  Text(
                     'Reward Points',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 22,
+                      fontSize: 22.sp,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  const Text(
+                  Text(
                     'Your total balance',
-                    style: TextStyle(color: Colors.white70, fontSize: 14),
+                    style: TextStyle(color: Colors.white70, fontSize: 14.sp),
                   ),
-                  const SizedBox(height: 12),
-                  const Text(
+                  SizedBox(height: 12.h),
+                  Text(
                     '1250',
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 56,
+                      fontSize: 56.sp,
                       fontWeight: FontWeight.w900,
                     ),
                   ),
-                  const Text(
+                  Text(
                     'points',
-                    style: TextStyle(color: Colors.white70, fontSize: 14),
+                    style: TextStyle(color: Colors.white70, fontSize: 14.sp),
                   ),
-                  const SizedBox(height: 24),
+                  SizedBox(height: 24.h),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _ActionButton(
-                        icon: Icons.storefront,
-                        label: 'Points Store',
-                        onTap: () {},
-                      ),
-                      _ActionButton(
-                        icon: Icons.add_circle_outline,
-                        label: 'Earn More',
-                        onTap: () {},
-                      ),
+                      _ActionButton(icon: Icons.storefront, label: 'Points Store', onTap: () {}),
+                      _ActionButton(icon: Icons.add_circle_outline, label: 'Earn More', onTap: () {}),
                     ],
                   ),
                 ],
               ),
             ),
 
-            const SizedBox(height: 24),
+            SizedBox(height: 24.h),
 
-            // Available Rewards Section
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Available Rewards',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF2C3E50),
-                    ),
+                    style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: const Color(0xFF2C3E50)),
                   ),
-                  const SizedBox(height: 12),
-                  _RewardCard(
-                    icon: Icons.card_giftcard,
-                    iconColor: Colors.blue,
-                    title: '10% OFF',
-                    subtitle: 'Next Purchase',
-                    badge: 'Claimed',
-                    badgeColor: Colors.grey,
-                    points: '500 points',
-                    showRedeem: false,
-                  ),
-                  _RewardCard(
-                    icon: Icons.local_shipping,
-                    iconColor: Colors.green,
-                    title: 'Free Delivery',
-                    subtitle: 'Valid till Dec 31',
-                    badge: null,
-                    badgeColor: null,
-                    points: '300 points',
-                    showRedeem: true,
-                    redeemColor: Colors.green,
-                  ),
-                  _RewardCard(
-                    icon: Icons.confirmation_number,
-                    iconColor: Colors.orange,
-                    title: '\$5 Discount Voucher',
-                    subtitle: 'Valid till Dec 31',
-                    badge: null,
-                    badgeColor: null,
-                    points: '750 points',
-                    showRedeem: true,
-                    redeemColor: Colors.orange,
-                  ),
-                  _RewardCard(
-                    icon: Icons.headset_mic,
-                    iconColor: Colors.purple,
-                    title: 'Priority Support',
-                    subtitle: '1 Month Access',
-                    badge: null,
-                    badgeColor: null,
-                    points: '1500 points',
-                    showRedeem: true,
-                    redeemColor: Colors.purple,
-                  ),
+                  SizedBox(height: 12.h),
+                  _RewardCard(icon: Icons.card_giftcard, iconColor: Colors.blue, title: '10% OFF', subtitle: 'Next Purchase', badge: 'Claimed', badgeColor: Colors.grey, points: '500 points', showRedeem: false),
+                  _RewardCard(icon: Icons.local_shipping, iconColor: Colors.green, title: 'Free Delivery', subtitle: 'Valid till Dec 31', badge: null, badgeColor: null, points: '300 points', showRedeem: true, redeemColor: Colors.green),
+                  _RewardCard(icon: Icons.confirmation_number, iconColor: Colors.orange, title: '\$5 Discount Voucher', subtitle: 'Valid till Dec 31', badge: null, badgeColor: null, points: '750 points', showRedeem: true, redeemColor: Colors.orange),
+                  _RewardCard(icon: Icons.headset_mic, iconColor: Colors.purple, title: 'Priority Support', subtitle: '1 Month Access', badge: null, badgeColor: null, points: '1500 points', showRedeem: true, redeemColor: Colors.purple),
                 ],
               ),
             ),
 
-            const SizedBox(height: 24),
+            SizedBox(height: 24.h),
 
-            // Recent Activity Section
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16),
+              padding: EdgeInsets.symmetric(horizontal: 16.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
+                  Text(
                     'Recent Activity',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF2C3E50),
-                    ),
+                    style: TextStyle(fontSize: 18.sp, fontWeight: FontWeight.bold, color: const Color(0xFF2C3E50)),
                   ),
-                  const SizedBox(height: 12),
-                  _ActivityItem(
-                    title: 'Donated Paracetamol',
-                    date: '2 Days ago',
-                    points: '+100',
-                    isPositive: true,
-                  ),
-                  _ActivityItem(
-                    title: 'Redeemed 10% OFF',
-                    date: '1 week ago',
-                    points: '-500',
-                    isPositive: false,
-                  ),
-                  _ActivityItem(
-                    title: 'Donated Vitamin D',
-                    date: '2 weeks ago',
-                    points: '+150',
-                    isPositive: true,
-                  ),
+                  SizedBox(height: 12.h),
+                  _ActivityItem(title: 'Donated Paracetamol', date: '2 Days ago', points: '+100', isPositive: true),
+                  _ActivityItem(title: 'Redeemed 10% OFF', date: '1 week ago', points: '-500', isPositive: false),
+                  _ActivityItem(title: 'Donated Vitamin D', date: '2 weeks ago', points: '+150', isPositive: true),
                 ],
               ),
             ),
-            const SizedBox(height: 30),
+            SizedBox(height: 30.h),
           ],
         ),
       ),
@@ -188,28 +117,23 @@ class _ActionButton extends StatelessWidget {
   final IconData icon;
   final String label;
   final VoidCallback onTap;
-
-  const _ActionButton({
-    required this.icon,
-    required this.label,
-    required this.onTap,
-  });
+  const _ActionButton({required this.icon, required this.label, required this.onTap});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
+        padding: EdgeInsets.symmetric(horizontal: 28.w, vertical: 12.h),
         decoration: BoxDecoration(
           color: Colors.white.withOpacity(0.2),
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(12.r),
         ),
         child: Column(
           children: [
-            Icon(icon, color: Colors.white, size: 26),
-            const SizedBox(height: 6),
-            Text(label, style: const TextStyle(color: Colors.white, fontSize: 13)),
+            Icon(icon, color: Colors.white, size: 26.sp),
+            SizedBox(height: 6.h),
+            Text(label, style: TextStyle(color: Colors.white, fontSize: 13.sp)),
           ],
         ),
       ),
@@ -228,89 +152,52 @@ class _RewardCard extends StatelessWidget {
   final bool showRedeem;
   final Color? redeemColor;
 
-  const _RewardCard({
-    required this.icon,
-    required this.iconColor,
-    required this.title,
-    required this.subtitle,
-    required this.badge,
-    required this.badgeColor,
-    required this.points,
-    required this.showRedeem,
-    this.redeemColor,
-  });
+  const _RewardCard({required this.icon, required this.iconColor, required this.title, required this.subtitle, required this.badge, required this.badgeColor, required this.points, required this.showRedeem, this.redeemColor});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 12),
-      padding: const EdgeInsets.all(14),
+      margin: EdgeInsets.only(bottom: 12.h),
+      padding: EdgeInsets.all(14.w),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(14.r),
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 8, offset: const Offset(0, 2))],
       ),
       child: Row(
         children: [
           Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-              color: iconColor.withOpacity(0.1),
-              borderRadius: BorderRadius.circular(10),
-            ),
-            child: Icon(icon, color: iconColor, size: 22),
+            padding: EdgeInsets.all(10.w),
+            decoration: BoxDecoration(color: iconColor.withOpacity(0.1), borderRadius: BorderRadius.circular(10.r)),
+            child: Icon(icon, color: iconColor, size: 22.sp),
           ),
-          const SizedBox(width: 12),
+          SizedBox(width: 12.w),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Color(0xFF2C3E50),
-                    )),
-                Text(subtitle,
-                    style: const TextStyle(fontSize: 12, color: Colors.grey)),
-                const SizedBox(height: 4),
-                Text(points,
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: iconColor,
-                      fontWeight: FontWeight.w600,
-                    )),
+                Text(title, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.sp, color: const Color(0xFF2C3E50))),
+                Text(subtitle, style: TextStyle(fontSize: 12.sp, color: Colors.grey)),
+                SizedBox(height: 4.h),
+                Text(points, style: TextStyle(fontSize: 12.sp, color: iconColor, fontWeight: FontWeight.w600)),
               ],
             ),
           ),
           if (badge != null)
             Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              decoration: BoxDecoration(
-                color: badgeColor!.withOpacity(0.15),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(badge!,
-                  style: TextStyle(
-                      color: badgeColor, fontSize: 12, fontWeight: FontWeight.w600)),
+              padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 5.h),
+              decoration: BoxDecoration(color: badgeColor!.withOpacity(0.15), borderRadius: BorderRadius.circular(8.r)),
+              child: Text(badge!, style: TextStyle(color: badgeColor, fontSize: 12.sp, fontWeight: FontWeight.w600)),
             ),
           if (showRedeem)
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
                 backgroundColor: redeemColor,
-                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8)),
+                padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 8.h),
+                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
               ),
-              child: const Text('Redeem',
-                  style: TextStyle(color: Colors.white, fontSize: 12)),
+              child: Text('Redeem', style: TextStyle(color: Colors.white, fontSize: 12.sp)),
             ),
         ],
       ),
@@ -323,47 +210,26 @@ class _ActivityItem extends StatelessWidget {
   final String date;
   final String points;
   final bool isPositive;
-
-  const _ActivityItem({
-    required this.title,
-    required this.date,
-    required this.points,
-    required this.isPositive,
-  });
+  const _ActivityItem({required this.title, required this.date, required this.points, required this.isPositive});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(12),
-      ),
+      margin: EdgeInsets.only(bottom: 10.h),
+      padding: EdgeInsets.symmetric(horizontal: 14.w, vertical: 12.h),
+      decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(12.r)),
       child: Row(
         children: [
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title,
-                    style: const TextStyle(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                        color: Color(0xFF2C3E50))),
-                Text(date,
-                    style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                Text(title, style: TextStyle(fontWeight: FontWeight.w600, fontSize: 14.sp, color: const Color(0xFF2C3E50))),
+                Text(date, style: TextStyle(fontSize: 12.sp, color: Colors.grey)),
               ],
             ),
           ),
-          Text(
-            points,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 16,
-              color: isPositive ? Colors.green : Colors.red,
-            ),
-          ),
+          Text(points, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.sp, color: isPositive ? Colors.green : Colors.red)),
         ],
       ),
     );

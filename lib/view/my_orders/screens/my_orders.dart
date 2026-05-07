@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class MyOrdersPage extends StatelessWidget {
   const MyOrdersPage({Key? key}) : super(key: key);
@@ -50,18 +51,16 @@ class MyOrdersPage extends StatelessWidget {
         backgroundColor: const Color(0xFF2563EB),
         foregroundColor: Colors.white,
         elevation: 0,
-        title: const Text(
+        title: Text(
           'My Orders',
-          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+          style: TextStyle(fontWeight: FontWeight.bold, fontSize: 18.sp),
         ),
         leading: const BackButton(),
       ),
       body: ListView.builder(
-        padding: const EdgeInsets.all(16),
+        padding: EdgeInsets.all(16.w),
         itemCount: _orders.length,
-        itemBuilder: (context, index) {
-          return _OrderCard(order: _orders[index]);
-        },
+        itemBuilder: (context, index) => _OrderCard(order: _orders[index]),
       ),
     );
   }
@@ -69,7 +68,6 @@ class MyOrdersPage extends StatelessWidget {
 
 class _OrderCard extends StatelessWidget {
   final Map<String, dynamic> order;
-
   const _OrderCard({required this.order});
 
   @override
@@ -78,20 +76,14 @@ class _OrderCard extends StatelessWidget {
     final bool canReorder = order['canReorder'] as bool;
 
     return Container(
-      margin: const EdgeInsets.only(bottom: 14),
+      margin: EdgeInsets.only(bottom: 14.h),
       decoration: BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.circular(14),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.05),
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
+        borderRadius: BorderRadius.circular(14.r),
+        boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.05), blurRadius: 8, offset: const Offset(0, 2))],
       ),
       child: Padding(
-        padding: const EdgeInsets.all(14),
+        padding: EdgeInsets.all(14.w),
         child: Column(
           children: [
             Row(
@@ -100,70 +92,39 @@ class _OrderCard extends StatelessWidget {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Order ${order['id']}',
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: Color(0xFF1E293B),
-                      ),
-                    ),
-                    const SizedBox(height: 2),
-                    Text(
-                      order['date'],
-                      style: const TextStyle(
-                          fontSize: 12, color: Color(0xFF94A3B8)),
-                    ),
+                    Text('Order ${order['id']}', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.sp, color: const Color(0xFF1E293B))),
+                    SizedBox(height: 2.h),
+                    Text(order['date'], style: TextStyle(fontSize: 12.sp, color: const Color(0xFF94A3B8))),
                   ],
                 ),
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Text(
-                      order['amount'],
-                      style: const TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 15,
-                        color: Color(0xFF1E293B),
-                      ),
-                    ),
-                    const SizedBox(height: 2),
+                    Text(order['amount'], style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15.sp, color: const Color(0xFF1E293B))),
+                    SizedBox(height: 2.h),
                     Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8, vertical: 3),
+                      padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 3.h),
                       decoration: BoxDecoration(
                         color: statusColor.withOpacity(0.1),
-                        borderRadius: BorderRadius.circular(6),
+                        borderRadius: BorderRadius.circular(6.r),
                       ),
-                      child: Text(
-                        order['status'],
-                        style: TextStyle(
-                          color: statusColor,
-                          fontSize: 11,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
+                      child: Text(order['status'], style: TextStyle(color: statusColor, fontSize: 11.sp, fontWeight: FontWeight.w600)),
                     ),
                   ],
                 ),
               ],
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8.h),
             Row(
               children: [
-                const Icon(Icons.shopping_bag_outlined,
-                    size: 14, color: Color(0xFF94A3B8)),
-                const SizedBox(width: 4),
-                Text(
-                  order['itemsCount'],
-                  style: const TextStyle(
-                      fontSize: 12, color: Color(0xFF94A3B8)),
-                ),
+                Icon(Icons.shopping_bag_outlined, size: 14.sp, color: const Color(0xFF94A3B8)),
+                SizedBox(width: 4.w),
+                Text(order['itemsCount'], style: TextStyle(fontSize: 12.sp, color: const Color(0xFF94A3B8))),
               ],
             ),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             const Divider(height: 1, color: Color(0xFFF1F5F9)),
-            const SizedBox(height: 10),
+            SizedBox(height: 10.h),
             Row(
               children: [
                 Expanded(
@@ -171,37 +132,23 @@ class _OrderCard extends StatelessWidget {
                     onPressed: () {},
                     style: OutlinedButton.styleFrom(
                       side: const BorderSide(color: Color(0xFF2563EB)),
-                      padding: const EdgeInsets.symmetric(vertical: 9),
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8)),
+                      padding: EdgeInsets.symmetric(vertical: 9.h),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
                     ),
-                    child: const Text(
-                      'View Details',
-                      style: TextStyle(
-                          color: Color(0xFF2563EB),
-                          fontSize: 13,
-                          fontWeight: FontWeight.w600),
-                    ),
+                    child: Text('View Details', style: TextStyle(color: const Color(0xFF2563EB), fontSize: 13.sp, fontWeight: FontWeight.w600)),
                   ),
                 ),
                 if (canReorder) ...[
-                  const SizedBox(width: 10),
+                  SizedBox(width: 10.w),
                   Expanded(
                     child: ElevatedButton(
                       onPressed: () {},
                       style: ElevatedButton.styleFrom(
                         backgroundColor: const Color(0xFF2563EB),
-                        padding: const EdgeInsets.symmetric(vertical: 9),
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(8)),
+                        padding: EdgeInsets.symmetric(vertical: 9.h),
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
                       ),
-                      child: const Text(
-                        'Reorder',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600),
-                      ),
+                      child: Text('Reorder', style: TextStyle(color: Colors.white, fontSize: 13.sp, fontWeight: FontWeight.w600)),
                     ),
                   ),
                 ],
